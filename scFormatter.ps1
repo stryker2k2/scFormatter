@@ -2,8 +2,8 @@
 #              msfvenom (1234) shellcode to Powershell (0x12,0x34) shellcode
 # Author: @stryker2k2
 # Link: github.com/stryker2k2/scFormatter
-# Version: 1.1.0
-# Last Modified: 20220608 @ 1300 CST
+# Version: 1.1.1
+# Last Modified: 20220608 @ 1320 CST
 
 $calc = 
 "fc48 83e4 f0e8 c000 0000 4151 4150 5251 5648 31d2 6548 8b52 6048 8b52 1848 8b52
@@ -98,6 +98,12 @@ Write-Host ""
 Write-Host ""
 Write-Host "[+] Task Completed!"
 Write-Host "[+] File can be found at $file"
+
+if (!$psISE)
+{
+    Write-Host -NoNewLine 'Press any key to continue...' -ForegroundColor Yellow;
+    $null = $Host.UI.RawUI.ReadKey('NoEcho,IncludeKeyDown');
+}
 
 # output example:
 # 0xfc,0x48,0x83,0xe4,0xf0,0xe8,0xc0,0x00...
